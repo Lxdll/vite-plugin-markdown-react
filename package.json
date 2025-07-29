@@ -1,0 +1,43 @@
+{
+  "name": "@lxdll/vite-plugin-react-markdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@lxdll/prettier-config": "^1.0.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/node": "^24.1.0",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.6"
+  },
+  "prettier": "@lxdll/prettier-config",
+  "dependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@types/markdown-it": "^14.1.2",
+    "dom-serializer": "^2.0.0",
+    "domutils": "^3.2.2",
+    "gray-matter": "^4.0.3",
+    "html-react-parser": "^5.2.6",
+    "htmlparser2": "^10.0.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-async": "^2.2.0"
+  }
+}
