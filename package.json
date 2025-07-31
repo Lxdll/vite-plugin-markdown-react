@@ -1,10 +1,13 @@
 {
-  "name": "@lxdll/vite-plugin-react-markdown",
-  "version": "1.0.0",
-  "description": "",
+  "name": "vite-plugin-markdown-react",
+  "version": "0.0.1",
+  "description": "Vite plugin to handle react code in markdown（.md）.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -15,9 +18,16 @@
     "dev": "tsup --watch",
     "build": "tsup"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "react",
+    "markdown",
+    "mdx",
+    "md"
+  ],
+  "author": "@lxdll <luxudongg@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "@lxdll/prettier-config": "^1.0.0",
     "@types/babel__core": "^7.20.5",

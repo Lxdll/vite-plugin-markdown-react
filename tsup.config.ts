@@ -7,6 +7,5 @@ export default <Options>{
   dts: true,
   shims: true,
   splitting: true,
-  // onSuccess: 'npm run build:fix',
   external: ['vite', 'lightningcss'],
 }

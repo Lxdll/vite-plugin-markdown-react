@@ -1,9 +1,9 @@
 import { ResolvedOptions } from './type'
 import matter from 'gray-matter'
-import { parseDocument } from 'htmlparser2'
 import { transformSync } from '@babel/core'
-import render from 'dom-serializer'
 import { TransformResult } from 'vite'
+import { parse } from './parse'
+import { process } from './process'
 
 export const createMarkdownToReact = (options: ResolvedOptions) => {
   const { wrapperDiv, wrapperComponent, wrapperClasses } = options
@@ -30,13 +30,8 @@ export const createMarkdownToReact = (options: ResolvedOptions) => {
     const grayMatterFile = matter(raw)
     let html = await markdownIt.renderAsync(grayMatterFile.content || '')
 
-    const parsedDocument = parseDocument(html, {
-      lowerCaseTags: false,
-      xmlMode: true,
-    })
-    html = render(parsedDocument, { selfClosingTags: true, xmlMode: true })
-
-    html = `<div dangerouslySetInnerHTML={{__html: \`${html}\`}}></div>`
+    html = parse(html)
+    html = process(html)
 
     if (wrapperDiv) {
       const resolvedWrapperClasses =

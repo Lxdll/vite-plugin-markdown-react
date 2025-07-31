@@ -5,7 +5,7 @@ type FilterPattern = ReadonlyArray<string | RegExp> | string | RegExp
 export type Options = {
   include?: FilterPattern
   exclude?: FilterPattern
-  babelConfig?: BabelConfig
+
   /**
    * Setup function for MarkdownIt instance.
    * This function can be used to add custom plugins or modify the MarkdownIt instance.
@@ -45,7 +45,9 @@ export type Options = {
     | ((id: string, code: string) => string | undefined | null)
 }
 
-export type ResolvedOptions = Required<Options>
+export interface ResolvedOptions extends Required<Options> {
+  babelConfig: BabelConfig
+}
 
 export type BabelConfig = {
   runtime: 'automatic' | 'classic'

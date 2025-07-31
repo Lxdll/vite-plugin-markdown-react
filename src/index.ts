@@ -1,16 +1,15 @@
 import { type Plugin, createFilter } from 'vite'
-import { resolveOptions } from './utils'
+import { resolveOptions } from './option'
 import { Options } from './type'
 import { createMarkdownToReact } from './markdown'
 
 export default function (options: Options = {}): Plugin {
   const resolvedOptions = resolveOptions(options)
   const markdownToReact = createMarkdownToReact(resolvedOptions)
-
   const filter = createFilter(resolvedOptions.include, resolvedOptions.exclude)
 
   return {
-    name: 'my-vite-plugin-react-markdown',
+    name: 'vite-plugin-markdown-react',
 
     async transform(raw: string, id: string) {
       if (!filter(id)) return
@@ -21,6 +20,8 @@ export default function (options: Options = {}): Plugin {
         console.error(error)
       }
     },
+
+    // TODO
     handleHotUpdate(ctx) {
       if (!filter(ctx.file)) return
 
