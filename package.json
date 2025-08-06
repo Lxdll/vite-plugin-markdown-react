@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-markdown-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vite plugin to handle react code in markdown（.md）.",
   "repository": "https://github.com/Lxdll/vite-plugin-markdown-react",
   "main": "dist/index.cjs",
