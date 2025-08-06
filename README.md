@@ -26,7 +26,7 @@ export default defineConfig({
 })
 ```
 
-And import it as a normal Vue component
+And import it as a normal React component
 
 ## Import Markdown as React components
 
