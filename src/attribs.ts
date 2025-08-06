@@ -39,6 +39,25 @@ export const processStyle = (childNodes: ChildNode[]) => {
   }
 }
 
+// tabindex -> tabIndex
+export const processTabIndex = (childNodes: ChildNode[]) => {
+  const NodesHasTabindex = filter(
+    (node) => {
+      return isTag(node) && hasAttrib(node, 'tabindex')
+    },
+    childNodes,
+    true,
+  )
+
+  for (const node of NodesHasTabindex) {
+    if (isTag(node)) {
+      let tabindex = getAttributeValue(node, 'tabindex') || ''
+      node.attribs.tabIndex = tabindex
+      delete node.attribs.tabindex
+    }
+  }
+}
+
 const parseStyleString = (styleStr: string): Record<string, string> => {
   return Object.fromEntries(
     styleStr

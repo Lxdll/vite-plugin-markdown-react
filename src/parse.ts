@@ -1,7 +1,7 @@
 import { parseDocument } from 'htmlparser2'
 import serializer from 'dom-serializer'
 import { type ChildNode } from 'domhandler'
-import { processClass, processStyle } from './attribs'
+import { processClass, processStyle, processTabIndex } from './attribs'
 
 export const parse = (htmlStr: string): string => {
   const parsedDocument = parseDocument(htmlStr, {
@@ -18,4 +18,5 @@ export const parse = (htmlStr: string): string => {
 export const processAttributes = (childNodes: ChildNode[]): void => {
   processStyle(childNodes)
   processClass(childNodes)
+  processTabIndex(childNodes)
 }

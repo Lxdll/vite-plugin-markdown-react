@@ -21,14 +21,17 @@ export default function (options: Options = {}): Plugin {
       }
     },
 
-    // TODO
-    handleHotUpdate(ctx) {
+    async handleHotUpdate(ctx) {
       if (!filter(ctx.file)) return
 
-      const defaultRead = ctx.read
-      ctx.read = async function () {
-        return (await markdownToReact(ctx.file, await defaultRead())).code
-      }
+      // markdown 文件变更后，强制页面刷新
+      ctx.server.ws.send({
+        type: 'full-reload',
+        path: '*',
+      })
+
+      // 不返回任何模块，阻止 Vite HMR 递归传染 React 组件
+      return []
     },
   }
 }
